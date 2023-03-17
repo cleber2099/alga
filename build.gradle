@@ -1,0 +1,27 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.0-SNAPSHOT'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.algoworks.algalog'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/snapshot' }
+
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation group: 'org.springframework.data', name: 'spring-data-jpa', version: '3.0.3'
+	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.32'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
