@@ -3,6 +3,7 @@ package com.algoworks.algalog.controller;
 import com.algoworks.algalog.repository.ClienteRepository;
 import com.algoworks.algalog.model.Cliente;
 import com.mysql.cj.xdevapi.Client;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,18 +35,27 @@ public class ClienteController {
     }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public  Cliente adicionar(@RequestBody Cliente cliente){
+    public  Cliente adicionar(@Valid @RequestBody Cliente cliente){
         return clienteRepository.save(cliente);
     }
-    @PutMapping("/{clientId}")
-    public  ResponseEntity<Cliente> atualizar(@PathVariable Long clienteId,
-                                              @RequestBody Cliente cliente){
+    @PutMapping("/{clienteId}")
+    public  ResponseEntity<Cliente> atualizar(@PathVariable(name = "clienteId") Long clienteId,
+                                              @Valid @RequestBody Cliente cliente){
         if (!clienteRepository.existsById(clienteId)){
             return  ResponseEntity.notFound().build();
         }
         cliente.setId(clienteId);
-        cliente= clienteRepository.save(cliente);
+        cliente = clienteRepository.save(cliente);
         return  ResponseEntity.ok(cliente);
+    }
+
+    @DeleteMapping("/{clienteId}")
+    public  ResponseEntity<Void> remover(@PathVariable Long clienteId){
+        if (!clienteRepository.existsById(clienteId)){
+            return  ResponseEntity.notFound().build();
+        }
+        clienteRepository.deleteById(clienteId);
+        return  ResponseEntity.noContent().build();
     }
 
 

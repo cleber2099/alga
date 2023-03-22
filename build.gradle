@@ -26,8 +26,8 @@ dependencies {
 	implementation "org.flywaydb:flyway-mysql"
 	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.26'
 	annotationProcessor 'org.projectlombok:lombok:1.18.26'
-
 	testCompileOnly 'org.projectlombok:lombok:1.18.26'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.0.4'
 }
 
 tasks.named('test') {
