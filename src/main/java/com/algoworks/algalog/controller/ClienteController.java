@@ -2,7 +2,6 @@ package com.algoworks.algalog.controller;
 
 import com.algoworks.algalog.repository.ClienteRepository;
 import com.algoworks.algalog.model.Cliente;
-import com.algoworks.algalog.service.CatalogoClienteService;
 import com.mysql.cj.xdevapi.Client;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -18,10 +17,8 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController {
-
-    private ClienteRepository clienteRepository;
-    private CatalogoClienteService catalogoClienteService;
-
+    @Autowired
+    ClienteRepository clienteRepository;
 
     @GetMapping
     public List<Cliente> listar() {
@@ -39,9 +36,8 @@ public class ClienteController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public  Cliente adicionar(@Valid @RequestBody Cliente cliente){
-        return catalogoClienteService.salvar(cliente);
+        return clienteRepository.save(cliente);
     }
-
     @PutMapping("/{clienteId}")
     public  ResponseEntity<Cliente> atualizar(@PathVariable(name = "clienteId") Long clienteId,
                                               @Valid @RequestBody Cliente cliente){
@@ -49,7 +45,7 @@ public class ClienteController {
             return  ResponseEntity.notFound().build();
         }
         cliente.setId(clienteId);
-        cliente = catalogoClienteService.salvar(cliente);
+        cliente = clienteRepository.save(cliente);
         return  ResponseEntity.ok(cliente);
     }
 
@@ -58,8 +54,8 @@ public class ClienteController {
         if (!clienteRepository.existsById(clienteId)){
             return  ResponseEntity.notFound().build();
         }
-            catalogoClienteService.excluir(clienteId);
-            return  ResponseEntity.noContent().build();
+        clienteRepository.deleteById(clienteId);
+        return  ResponseEntity.noContent().build();
     }
 
 
