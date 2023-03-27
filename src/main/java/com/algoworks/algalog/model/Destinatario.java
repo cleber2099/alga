@@ -14,7 +14,7 @@ public class Destinatario
      private String nome;
      @Column(name="destinatario_logradouro")
 
-     private String Logradouro;
+     private String logradouro;
      @Column(name="destinatario_numero")
 
      private String numero;

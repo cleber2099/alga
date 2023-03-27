@@ -4,7 +4,7 @@ create table entrega (
  taxa decimal(10,2) not null,
  status varchar(20) not null,
  data_perdido datetime not null,
- data_finalização datetime,
+ data_finalizacao datetime,
 
  destinatario_nome varchar(60) not null,
  destinatario_logradouro varchar(255) not null,
