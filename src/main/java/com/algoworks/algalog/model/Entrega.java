@@ -1,6 +1,11 @@
 package com.algoworks.algalog.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.groups.ConvertGroup;
+import jakarta.validation.groups.Default;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,14 +22,27 @@ public class Entrega {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private  Long id;
+
+    @Valid
+    @NotNull
     @ManyToOne
+    @ConvertGroup(from = Default.class, to =ValidationGroups.ClienteId.class)
+
     private  Cliente cliente;
+    @Valid
+    @NotNull
     @Embedded
     private Destinatario destinatario;
+    @NotNull
     private BigDecimal taxa;
+
+    @JsonProperty(access =  JsonProperty.Access.READ_ONLY)
     @Enumerated(EnumType.STRING)
     private  StatusEntrega status;
+    @Transient
+    @JsonProperty(access =  JsonProperty.Access.READ_ONLY)
     private LocalDateTime dataPedido;
+    @JsonProperty(access =  JsonProperty.Access.READ_ONLY)
     private LocalDateTime dataFinalizacao;
 
 }
