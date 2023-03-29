@@ -17,6 +17,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -38,7 +39,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
         Problema problema = new Problema();
         problema.setStatus(status.value());
-        problema.setDatahora(LocalDateTime.now());
+        problema.setDatahora(OffsetDateTime.now().now());
         problema.setTitulo("um ou mais campos preenchidos incorretamentes");
 
         problema.setCampos(campos);
@@ -51,7 +52,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
         Problema problema = new Problema();
         problema.setStatus(status.value());
-        problema.setDatahora(LocalDateTime.now());
+        problema.setDatahora(OffsetDateTime.now());
         problema.setTitulo(ex.getMessage());
         return  handleExceptionInternal(ex,problema,new HttpHeaders(),status, request);
 

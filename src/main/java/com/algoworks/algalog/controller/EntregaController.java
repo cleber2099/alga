@@ -29,7 +29,7 @@ public class EntregaController {
     public List<Entrega> listar(){
     return   entregaRepository.findAll();
     }
-    @GetMapping("/{entreId}")
+    @GetMapping("/{entregaId}")
     public ResponseEntity<Entrega> buscar(@PathVariable Long entregaId){
         Optional<Entrega> entrega = entregaRepository.findById(entregaId);
         if (entrega.isPresent()){
