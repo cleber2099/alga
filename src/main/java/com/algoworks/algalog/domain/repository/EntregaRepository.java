@@ -1,6 +1,6 @@
-package com.algoworks.algalog.repository;
+package com.algoworks.algalog.domain.repository;
 
-import com.algoworks.algalog.model.Entrega;
+import com.algoworks.algalog.domain.model.Entrega;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

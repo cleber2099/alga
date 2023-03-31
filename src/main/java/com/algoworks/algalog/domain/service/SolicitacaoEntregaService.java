@@ -1,16 +1,13 @@
-package com.algoworks.algalog.service;
+package com.algoworks.algalog.domain.service;
 
-import com.algoworks.algalog.exception.NegocioException;
-import com.algoworks.algalog.model.Cliente;
-import com.algoworks.algalog.model.Entrega;
-import com.algoworks.algalog.model.StatusEntrega;
-import com.algoworks.algalog.repository.ClienteRepository;
-import com.algoworks.algalog.repository.EntregaRepository;
+import com.algoworks.algalog.domain.model.Cliente;
+import com.algoworks.algalog.domain.model.Entrega;
+import com.algoworks.algalog.domain.model.StatusEntrega;
+import com.algoworks.algalog.domain.repository.EntregaRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 @AllArgsConstructor

@@ -1,8 +1,7 @@
-package com.algoworks.algalog.controller;
+package com.algoworks.algalog.api.controller;
 
-import com.algoworks.algalog.repository.ClienteRepository;
-import com.algoworks.algalog.model.Cliente;
-import com.mysql.cj.xdevapi.Client;
+import com.algoworks.algalog.domain.repository.ClienteRepository;
+import com.algoworks.algalog.domain.model.Cliente;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

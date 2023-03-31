@@ -1,4 +1,4 @@
-package com.algoworks.algalog.exception;
+package com.algoworks.algalog.domain.exception;
 
 public class NegocioException extends RuntimeException {
     private static  final long serialVersionUID = 1L;

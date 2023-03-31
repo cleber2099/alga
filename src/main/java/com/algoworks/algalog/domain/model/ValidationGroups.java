@@ -1,4 +1,4 @@
-package com.algoworks.algalog.model;
+package com.algoworks.algalog.domain.model;
 
 public interface ValidationGroups {
 

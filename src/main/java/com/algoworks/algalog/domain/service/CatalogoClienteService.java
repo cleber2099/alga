@@ -1,8 +1,8 @@
-package com.algoworks.algalog.service;
+package com.algoworks.algalog.domain.service;
 
-import com.algoworks.algalog.exception.NegocioException;
-import com.algoworks.algalog.model.Cliente;
-import com.algoworks.algalog.repository.ClienteRepository;
+import com.algoworks.algalog.domain.exception.NegocioException;
+import com.algoworks.algalog.domain.model.Cliente;
+import com.algoworks.algalog.domain.repository.ClienteRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

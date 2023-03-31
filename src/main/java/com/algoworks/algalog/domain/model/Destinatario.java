@@ -1,4 +1,4 @@
-package com.algoworks.algalog.model;
+package com.algoworks.algalog.domain.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
