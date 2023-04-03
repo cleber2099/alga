@@ -38,7 +38,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         Problema problema = new Problema();
         problema.setStatus(status.value());
         problema.setDatahora(OffsetDateTime.now().now());
-        problema.setTitulo("um ou mais campos preenchidos incorretamentes");
+        problema.setTitulo("um ou mais campos preenchidos incorretamente");
 
         problema.setCampos(campos);
 
