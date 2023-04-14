@@ -11,12 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 @AllArgsConstructor
 @Service
 public class RegistroOcorrenciaService {
-    private EntregaRepository entregaRepository;
+    private BuscaEntregaService buscaEntregaService
 
     @Transactional
     public Ocorrencia registrar(Long entregaId, String descricao){
-        Entrega entrega = entregaRepository.findById(entregaId)
-                .orElseThrow(() -> new NegocioException("Entrega não encontrada"));
+        Entrega entrega = buscaEntregaService.buscar(entregaId);
         return  entrega.adicionarOcorrencia(descricao);
     }
 }
