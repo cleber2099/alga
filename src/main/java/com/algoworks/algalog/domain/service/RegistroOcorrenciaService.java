@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 @AllArgsConstructor
 @Service
 public class RegistroOcorrenciaService {
-    private BuscaEntregaService buscaEntregaService
+    private BuscaEntregaService buscaEntregaService;
 
     @Transactional
     public Ocorrencia registrar(Long entregaId, String descricao){
