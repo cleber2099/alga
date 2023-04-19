@@ -6,6 +6,7 @@ import com.algoworks.algalog.api.model.EntregaModel;
 import com.algoworks.algalog.api.model.input.EntregaInput;
 import com.algoworks.algalog.domain.model.Entrega;
 import com.algoworks.algalog.domain.repository.EntregaRepository;
+import com.algoworks.algalog.domain.service.FinalizacaoEntregaService;
 import com.algoworks.algalog.domain.service.SolicitacaoEntregaService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -25,6 +26,7 @@ public class EntregaController {
     private EntregaRepository entregaRepository;
     private SolicitacaoEntregaService solicitacaoEntregaService;
     private EntregaAssembler entregaAssembler;
+    private FinalizacaoEntregaService finalizacaoEntregaService;
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public EntregaModel solicitar(@Valid  @RequestBody EntregaInput entregaInput){
@@ -32,6 +34,12 @@ public class EntregaController {
             Entrega entregaSolicitada = solicitacaoEntregaService.solicitar(novaEntrega);
             return  entregaAssembler.toModel(entregaSolicitada);
     }
+    @PutMapping("/{entregaId}/finalizacao")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void finalizar(@PathVariable Long entregaId){
+         finalizacaoEntregaService.finalizar((entregaId));
+    }
+
     @GetMapping
     public List<EntregaModel> listar(){
         return   entregaAssembler.toCollectionModel(entregaRepository.findAll());
